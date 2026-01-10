@@ -1,0 +1,203 @@
+{
+  "language": "English",
+  "score": {
+    "total_mcq": 10,
+    "correct_mcq": 4,
+    "total_open_ended": 5,
+    "correct_open_ended": 0
+  },
+  "mcq_results": [
+    {
+      "question_number": "1",
+      "question": "What is the primary difference between image classification and object detection?",
+      "user_answer": "B",
+      "correct_answer": "B",
+      "is_correct": "Correct",
+      "explanation": "Object detection combines both object localization (drawing bounding boxes) and image classification (identifying object classes) for multiple objects in an image, whereas image classification simply assigns a class label to a single object in an image.",
+      "options": {
+        "A": "Image classification identifies the location of objects, while object detection predicts the class of a single object.",
+        "B": "Image classification predicts the class of a single object, while object detection localizes and classifies multiple objects.",
+        "C": "Image classification uses bounding boxes, while object detection only uses class labels.",
+        "D": "Image classification requires more computational power than object detection.",
+        "E": "Image classification combines object localization and image segmentation."
+      }
+    },
+    {
+      "question_number": "2",
+      "question": "In object localization, what information does the output 'y' typically contain?",
+      "user_answer": "B",
+      "correct_answer": "C",
+      "is_correct": "Incorrect",
+      "explanation": "The output 'y' in object localization typically includes a probability (pc) indicating the presence of an object, along with the bounding box coordinates (bx, by, bw, bh) that define the object's location.",
+      "options": {
+        "A": "Only the class label of the object.",
+        "B": "Only the bounding box coordinates (bx, by, bw, bh).",
+        "C": "The probability of an object's presence (pc) and the bounding box coordinates (bx, by, bw, bh).",
+        "D": "Only the landmark coordinates.",
+        "E": "Only the dimensions of the image."
+      }
+    },
+    {
+      "question_number": "3",
+      "question": "What is the purpose of Non-max Suppression in object detection?",
+      "user_answer": "B",
+      "correct_answer": "C",
+      "is_correct": "Incorrect",
+      "explanation": "Non-max suppression eliminates redundant bounding boxes that overlap significantly, ensuring that only the most confident and accurate detections are retained for each object.",
+      "options": {
+        "A": "To increase the number of bounding boxes.",
+        "B": "To ensure that each object is detected multiple times.",
+        "C": "To clean up multiple detections of the same object by discarding overlapping bounding boxes.",
+        "D": "To improve the accuracy of image classification.",
+        "E": "To train a ConvNet with cropped images."
+      }
+    },
+    {
+      "question_number": "4",
+      "question": "What problem do anchor boxes solve in object detection?",
+      "user_answer": "B",
+      "correct_answer": "C",
+      "is_correct": "Incorrect",
+      "explanation": "Anchor boxes allow a single grid cell to predict multiple objects, particularly when two objects have their midpoints within the same grid cell.",
+      "options": {
+        "A": "The problem of objects being too small to be detected.",
+        "B": "The problem of detecting only one object in an image.",
+        "C": "The problem of detecting multiple objects in the same grid cell.",
+        "D": "The problem of inaccurate bounding box predictions.",
+        "E": "The problem of objects with high IoU."
+      }
+    },
+    {
+      "question_number": "5",
+      "question": "In the YOLO algorithm, what does the output 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ represent when p_c = 0?",
+      "user_answer": "B",
+      "correct_answer": "C",
+      "is_correct": "Incorrect",
+      "explanation": "When p_c = 0, it signifies that there is no object present within the grid cell. Consequently, the values for bounding box coordinates and class probabilities become irrelevant.",
+      "options": {
+        "A": "An object is present in the grid cell, and the bounding box coordinates are relevant.",
+        "B": "An object is present in the grid cell, but only the class probabilities are relevant.",
+        "C": "No object is present in the grid cell, and all other values are irrelevant.",
+        "D": "An object is present, and the location refers to the background.",
+        "E": "An object is present, but all properties are unknown."
+      }
+    },
+    {
+      "question_number": "6",
+      "question": "What is Intersection over Union (IoU) used for in object detection?",
+      "user_answer": "B",
+      "correct_answer": "B",
+      "is_correct": "Correct",
+      "explanation": "Intersection over Union (IoU) is a metric used to evaluate the accuracy of a bounding box prediction. It measures the overlap between the predicted bounding box and the ground truth bounding box.",
+      "options": {
+        "A": "Training the object detection model.",
+        "B": "Evaluating the accuracy of bounding box predictions by comparing the predicted box with the ground truth box.",
+        "C": "Generating anchor boxes.",
+        "D": "Determining the number of objects in an image.",
+        "E": "Performing non-max suppression."
+      }
+    },
+    {
+      "question_number": "7",
+      "question": "Which of the following algorithms uses a segmentation algorithm to find 'blobs' before running a classifier?",
+      "user_answer": "B",
+      "correct_answer": "D",
+      "is_correct": "Incorrect",
+      "explanation": "R-CNN (Region with CNN) first uses a segmentation algorithm to identify potential regions of interest (blobs) in an image and then applies a classifier to each of these regions.",
+      "options": {
+        "A": "YOLO.",
+        "B": "Sliding Window Detection Algorithm.",
+        "C": "U-NET.",
+        "D": "R-CNN.",
+        "E": "CNN."
+      }
+    },
+    {
+      "question_number": "8",
+      "question": "What is the primary goal of semantic segmentation?",
+      "user_answer": "B",
+      "correct_answer": "B",
+      "is_correct": "Correct",
+      "explanation": "Semantic segmentation aims to assign a class label to each pixel in an image, effectively creating a pixel-wise classification.",
+      "options": {
+        "A": "To detect the presence of objects in an image.",
+        "B": "To classify each pixel in an image with a specific class label.",
+        "C": "To draw bounding boxes around detected objects.",
+        "D": "To predict the number of objects in an image.",
+        "E": "To get rid of non-interesting region to classify."
+      }
+    },
+    {
+      "question_number": "9",
+      "question": "What is the purpose of skip connections in the U-NET architecture?",
+      "user_answer": "B",
+      "correct_answer": "C",
+      "is_correct": "Incorrect",
+      "explanation": "Skip connections in U-NET allow the network to combine high-resolution, spatial information from earlier layers with the contextual information learned in deeper layers, resulting in more precise segmentation.",
+      "options": {
+        "A": "To reduce the number of channels.",
+        "B": "To increase the spatial resolution of the image.",
+        "C": "To obtain both spatial and contextual information in deeper layers.",
+        "D": "To only obtain contextual information",
+        "E": "To perform transpose convolution."
+      }
+    },
+    {
+      "question_number": "10",
+      "question": "What is the primary function of transpose convolution?",
+      "user_answer": "B",
+      "correct_answer": "B",
+      "is_correct": "Correct",
+      "explanation": "Transpose convolution is used to upsample a tensor, increasing its spatial dimensions. This is crucial in semantic segmentation for generating a segmentation map with the same dimensions as the input image.",
+      "options": {
+        "A": "To reduce the size of a tensor.",
+        "B": "To increase the size of a tensor.",
+        "C": "To perform per-pixel classification.",
+        "D": "To identify the boundaries of objects.",
+        "E": "To use sliding windows for detection."
+      }
+    }
+  ],
+  "open_ended_results": [
+    {
+      "question_number": "1",
+      "question": "Explain the difference between object localization and object detection.",
+      "model_answer": "Object localization focuses on identifying the location of one or more objects in an image by drawing bounding boxes around them. Object detection, on the other hand, combines object localization with image classification. It not only locates the objects but also classifies them, identifying what each object is.",
+      "user_answer": "Menkul kıymetlerin gelişimi sebep olmuştur.",
+      "rating": "Incorrect",
+      "explanation": "The user provided an answer in Turkish that is unrelated to the question about object localization and object detection."
+    },
+    {
+      "question_number": "2",
+      "question": "Describe the sliding window detection algorithm and its primary drawback.",
+      "model_answer": "The sliding window detection algorithm works by sliding a window of different sizes across an image and classifying the content within each window using a convolutional neural network (ConvNet). The primary drawback of this algorithm is its high computational cost, as it requires processing a large number of windows.",
+      "user_answer": "Menkul kıymetlerin gelişimi sebep olmuştur.",
+      "rating": "Incorrect",
+      "explanation": "The user answer is unrelated to the question and does not describe the sliding window detection algorithm or its drawbacks."
+    },
+    {
+      "question_number": "3",
+      "question": "Explain how the Intersection over Union (IoU) metric is used to evaluate object detection models.",
+      "model_answer": "IoU is calculated as the area of intersection between the predicted bounding box and the ground truth bounding box, divided by the area of their union. A higher IoU indicates a better overlap and therefore a more accurate prediction. A common threshold (e.g., 0.5) is used to determine if a detection is considered \"correct.\"",
+      "user_answer": "Menkul kıymetlerin gelişimi sebep olmuştur.",
+      "rating": "Incorrect",
+      "explanation": "The user answer is not related to the question and does not explain IoU."
+    },
+    {
+      "question_number": "4",
+      "question": "What is the purpose of anchor boxes, and how do they contribute to improving object detection?",
+      "model_answer": "Anchor boxes are pre-defined bounding boxes with specific shapes and sizes that are used to detect multiple objects within a single grid cell. They help the model predict objects with different aspect ratios and scales, improving the detection of objects that might otherwise be missed. Each object in the training image is assigned to the grid cell that contains the object’s midpoint and anchor box for the grid cell with highest IoU.",
+      "user_answer": "Menkul kıymetlerin gelişimi sebep olmuştur.",
+      "rating": "Incorrect",
+      "explanation": "The user's answer is in Turkish and does not address the question about anchor boxes in object detection."
+    },
+    {
+      "question_number": "5",
+      "question": "Explain the concept of transpose convolution and its application in semantic segmentation.",
+      "model_answer": "Transpose convolution is an operation used to increase the spatial dimensions of a tensor. It effectively performs the reverse of a standard convolution. In semantic segmentation, transpose convolution is used in the decoding path of architectures like U-NET to upsample feature maps and generate a pixel-wise classification map with the same dimensions as the input image.",
+      "user_answer": "Menkul kıymetlerin gelişimi sebep olmuştur.",
+      "rating": "Incorrect",
+      "explanation": "The user's answer is in Turkish and does not address the question about transpose convolution and its application in semantic segmentation."
+    }
+  ]
+}

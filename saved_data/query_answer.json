@@ -1,0 +1,616 @@
+{
+  "question": "what is the topic of this document?",
+  "answer": "CNN Applications",
+  "language": "English",
+  "sources": [
+    "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+  ],
+  "used_chunks": [
+    {
+      "chunk_id": "chunk-001",
+      "text": "Dr. Selim YılmazSpring 2025Lecture #6CNN Applications",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-002",
+      "text": "Today•Object Detection•Object Localization•Bounding Box Prediction•Non-max suppression•Anchor Boxes•YOLO Algorithm•Semantic Segmentation•U-NETs",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-003",
+      "text": "Object Detection",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-004",
+      "text": "Terminologies•Imageclassificationinvolvespredictingtheclassofoneobjectinanimage.•Objectlocalizationreferstoidentifyingthelocationofoneormoreobjectsinanimageanddrawinga boundingboxaroundtheirextent.•Objectdetectioncombinesthesetwotasksandlocalizesandclassifiesoneormoreobjectsinanimage.",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-005",
+      "text": "Terminologies•Image Classification: Predict the type or class of an object in an image.•Input: An image with a single object, such as a photograph.•Output: A class label•Object Localization: Locate the presence of objects in an image and indicate their location with a bounding box.•Input: An image",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-006",
+      "text": "location with a bounding box.•Input: An image with one or more objects, such as a photograph.•Output: One or more bounding boxes•Object Detection: Locate the presence of objects with a bounding box and types or classes of the located objects in an image.•Input: An image with one or more objects,",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-007",
+      "text": "image.•Input: An image with one or more objects, such as a photograph.•Output: One or more bounding boxes",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-008",
+      "text": "Object Localization•Object localization is the first step of object detection. ImageclassificationClassification withlocalizationObjectDetection ‘Car’ ‘Car’ image credit: deeplearning.ai",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-009",
+      "text": "Object Localization•Classification with localization. image credit: deeplearning.ai … Labels:1 -pedestrian2 -car3 -motorcycle4 -background",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-010",
+      "text": "Object Localization•Classification with localization. image credit: deeplearning.ai … Labels:1 -pedestrian2 -car3 -motorcycle4 -background (0,0) (1,1)bx,by bwbh 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ Need to output bx,by,bw,bh,class label (1-4) 𝑝!: is there any object?𝑐\": probability for first category (i.e.,",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-011",
+      "text": "object?𝑐\": probability for first category (i.e., pedestrian)",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-012",
+      "text": "Object Localization•Classification with localization. image credit: deeplearning.ai … Labels:1 -pedestrian2 -car3 -motorcycle4 -background (0,0) (1,1)bx,by bwbh 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ = 10.50.70.30.4010 Need to output bx,by,bw,bh,class label (1-4)",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-013",
+      "text": "Object Localization•Classification with localization. image credit: deeplearning.ai … Labels:1 -pedestrian2 -car3 -motorcycle4 -background (0,0) (1,1) 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ = 0??????? Need to output bx,by,bw,bh,class label (1-4) ?: don’t care",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-014",
+      "text": "Object Localization•Classification with localization. image credit: deeplearning.ai … Labels:1 -pedestrian2 -car3 -motorcycle4 -background (0,0) (1,1) 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ Need to output bx,by,bw,bh,class label (1-4) ℒ2𝑦,𝑦=4%&' (2𝑦%−𝑦%#𝑦'=12𝑦'−𝑦'#𝑦'=0 Loss function:",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-015",
+      "text": "Landmark Detection•Landmark detection is a problem where X and Y coordinates of important points in image is learned. image credit: deeplearning.ai bx,by,bh,bw",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-016",
+      "text": "Landmark Detection•Landmark detection is a problem where X and Y coordinates of important points in image is learned. image credit: deeplearning.ai bx,by,bh,bw l1x,l1y",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-017",
+      "text": "Landmark Detection•Landmark detection is a problem where X and Y coordinates of important points in image is learned. image credit: deeplearning.ai bx,by,bh,bw l1x,l1yl2x,l2y",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-018",
+      "text": "Landmark Detection•Landmark detection is a problem where X and Y coordinates of important points in image is learned. image credit: deeplearning.ai bx,by,bh,bw l1x,l1yl2x,l2y...l64x,l64y",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-019",
+      "text": "Landmark Detection•Landmark detection is a problem where X and Y coordinates of important points in image is learned. image credit: deeplearning.ai …𝑦= 𝑝!𝑙1𝑥𝑙1𝑦𝑙2𝑥𝑙2𝑦…𝑙64𝑥𝑙64𝑦 face?",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-020",
+      "text": "Landmark Detection•The objective of landmark detection is to have neural network that learns the key position on an image by providing label set. image credit: deeplearning.ai bx,by,bh,bw l1x,l1yl2x,l2y...l64x,l64y People pose detection",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-021",
+      "text": "Landmark Detection•The labels have to be consistent across different images.•for example; l1x, and l1y must show the position of the left corner of left eye. image credit: deeplearning.ai bx,by,bh,bw l1x,l1yl2x,l2y...l64x,l64y People pose detection",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-022",
+      "text": "Object Detection•Sliding Window Detection Algorithm:•IDEA is very simple: image credit: deeplearning.ai Training set:x y1 1 1 0 0 y Train ConvNet with cropped images",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-023",
+      "text": "Object Detection•Sliding Window Detection Algorithm:•IDEA is very simple: image credit: deeplearning.ai Then slide a window with different sizes over the test imageFor each window area,test it with ConvNet model",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-024",
+      "text": "Object Detection•Sliding Window Detection Algorithm:•IDEA is very simple: image credit: deeplearning.ai Then slide a window with different sizes over the test imageFor each window area,test it with ConvNet model0",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-025",
+      "text": "Object Detection•Sliding Window Detection Algorithm:•IDEA is very simple: image credit: deeplearning.ai Then slide a window with different sizes over the test imageFor each window area,test it with ConvNet model0",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-026",
+      "text": "Object Detection•Sliding Window Detection Algorithm:•IDEA is very simple: image credit: deeplearning.ai Then slide a window with different sizes over the test imageFor each window area,test it with ConvNet model0",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-027",
+      "text": "Object Detection•Sliding Window Detection Algorithm:•IDEA is very simple: image credit: deeplearning.ai Then slide a window with different sizes over the test imageFor each window area,test it with ConvNet model0",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-028",
+      "text": "Object Detection•Sliding Window Detection Algorithm:•IDEA is very simple: image credit: deeplearning.ai Then slide a window with different sizes over the test imageFor each window area,test it with ConvNet model0",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-029",
+      "text": "Object Detection•Sliding Window Detection Algorithm:•IDEA is very simple: image credit: deeplearning.ai Then slide a window with different sizes over the test imageFor each window area,test it with ConvNet model0 Enlarge the window",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-030",
+      "text": "Object Detection•Sliding Window Detection Algorithm:•IDEA is very simple: image credit: deeplearning.ai Then slide a window with different sizes over the test imageFor each window area,test it with ConvNet model0",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-031",
+      "text": "Object Detection•Sliding Window Detection Algorithm:•IDEA is very simple: image credit: deeplearning.ai Then slide a window with different sizes over the test imageFor each window area,test it with ConvNet model1",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-032",
+      "text": "Object Detection•Sliding Window Detection Algorithm:•IDEA is very simple: image credit: deeplearning.ai Then slide a window with different sizes over the test imageFor each window area,test it with ConvNet model1 Enlarge the window The main drawback of this algorithm is the high computation cost!",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-033",
+      "text": "Bounding Box Prediction•With Sliding Window Algorithm, none of the boxes can match perfectly with the position of the car. image credit: deeplearning.ai predictionground truth",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-034",
+      "text": "Bounding Box Prediction•Ground truth may sometimes be rectangular. image credit: deeplearning.ai",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-035",
+      "text": "Bounding Box Prediction•YOLO (You Only Look Once) Algorithm:•Grid image.•Apply image classification and image localization for each grid cell. image credit: deeplearning.aiRedmon et al., 2015, You Only Look Once: Unified real-time object detection",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-036",
+      "text": "Bounding Box Prediction•YOLO (You Only Look Once) Algorithm:•Grid image.•Apply image classification and image localization for each grid cell.•Labels for training•For each grid cell: image credit: deeplearning.aiRedmon et al., 2015, You Only Look Once: Unified real-time object detection 𝑦=",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-037",
+      "text": "Look Once: Unified real-time object detection 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ = 0???????",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-038",
+      "text": "Bounding Box Prediction•YOLO (You Only Look Once) Algorithm:•Grid image.•Apply image classification and image localization for each grid cell.•Labels for training•For each grid cell: image credit: deeplearning.aiRedmon et al., 2015, You Only Look Once: Unified real-time object detection 𝑦=",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-039",
+      "text": "Look Once: Unified real-time object detection 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ = 0???????",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-040",
+      "text": "Bounding Box Prediction•YOLO (You Only Look Once) Algorithm:•Grid image.•Apply image classification and image localization for each grid cell.•Labels for training•For each grid cell: image credit: deeplearning.aiRedmon et al., 2015, You Only Look Once: Unified real-time object detection 𝑦=",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-041",
+      "text": "Look Once: Unified real-time object detection 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ = 0???????",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-042",
+      "text": "Bounding Box Prediction•YOLO (You Only Look Once) Algorithm:•Grid image.•Apply image classification and image localization for each grid cell.•Labels for training•For each grid cell: image credit: deeplearning.aiRedmon et al., 2015, You Only Look Once: Unified real-time object detection 𝑦=",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-043",
+      "text": "Look Once: Unified real-time object detection 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ = 1𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤010",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-044",
+      "text": "Bounding Box Prediction•YOLO (You Only Look Once) Algorithm:•Grid image.•Apply image classification and image localization for each grid cell.•Labels for training•For each grid cell: image credit: deeplearning.aiRedmon et al., 2015, You Only Look Once: Unified real-time object detection 𝑦=",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-045",
+      "text": "Look Once: Unified real-time object detection 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ = 1𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤010",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-046",
+      "text": "Bounding Box Prediction•YOLO (You Only Look Once) Algorithm:•Grid image.•Apply image classification and image localization for each grid cell.•Labels for training•For each grid cell: image credit: deeplearning.aiRedmon et al., 2015, You Only Look Once: Unified real-time object detection 𝑦=",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-047",
+      "text": "Look Once: Unified real-time object detection 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ = 1𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤010 = 10.40.30.50.9010 (0,0) (1,1)",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-048",
+      "text": "Bounding Box Prediction•YOLO (You Only Look Once) Algorithm:•Grid image.•Apply image classification and image localization for each grid cell.•Labels for training•For each grid cell: image credit: deeplearning.aiRedmon et al., 2015, You Only Look Once: Unified real-time object detection 𝑦=",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-049",
+      "text": "Look Once: Unified real-time object detection 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ = 1𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤010 = 10.20.450.81.2010 (0,0) (1,1) 0 < bx,by < 1bh,bw could be > 1",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-050",
+      "text": "Bounding Box Prediction•YOLO (You Only Look Once) Algorithm:•Grid image.•Apply image classification and image localization for each grid cell.•Target output•3×3×8 image credit: deeplearning.aiRedmon et al., 2015, You Only Look Once: Unified real-time object detection",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-051",
+      "text": "Bounding Box Prediction•YOLO (You Only Look Once) Algorithm:•Grid image.•Apply image classification and image localization for each grid cell.•Target output•3×3×8 image credit: deeplearning.aiRedmon et al., 2015, You Only Look Once: Unified real-time object detection 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ =",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-052",
+      "text": "real-time object detection 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ = 0???????1×1×8",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-053",
+      "text": "Bounding Box Prediction•YOLO (You Only Look Once) Algorithm:•Grid image.•Apply image classification and image localization for each grid cell.•The network image credit: deeplearning.aiRedmon et al., 2015, You Only Look Once: Unified real-time object detection x ConvNety100×100×3 3×3×8",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-054",
+      "text": "Bounding Box Prediction•Evaluating the object detection model:•Intersection over Union (IoU) image credit: deeplearning.ai predictionground truth 𝐼𝑜𝑈=𝑖𝑛𝑡𝑒𝑟𝑠𝑒𝑐𝑡𝑖𝑜𝑛𝑢𝑛𝑖𝑜𝑛 “Correct” if 𝐼𝑜𝑈≥0.5",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-055",
+      "text": "Bounding Box Prediction•Non-max Suppression:•In object detection problem there may be cases where bounding boxes may overlap each other. image credit: deeplearning.ai",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-056",
+      "text": "Bounding Box Prediction•Non-max Suppression:•In object detection problem there may be cases where bounding boxes may overlap each other. image credit: deeplearning.ai 0.8 0.7 0.7 0.9 0.55",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-057",
+      "text": "Bounding Box Prediction•Non-max Suppression:•Because each individual cell may tell that the center of object (car in this example) is in it. image credit: deeplearning.ai 0.8 0.7 0.7 0.9 0.55 15×15 grids",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-058",
+      "text": "Bounding Box Prediction•Non-max Suppression:•What this algorithm does is it simply cleans up some of the multiple detections of each object according to the probability 𝑝H. image credit: deeplearning.ai 0.8 0.7 0.7 0.9 0.55",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-059",
+      "text": "Bounding Box Prediction•Non-max Suppression:•What this algorithm does is it simply cleans up some of the multiple detections of each object according to the probability 𝑝H. image credit: deeplearning.ai 0.8 0.7 0.7 0.9 0.55",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-060",
+      "text": "Bounding Box Prediction•Non-max Suppression:•Implementation is simple:•Discard all boxes with 𝑝!≤0.6•While there are any remaining boxes:ØPick the box with the largest 𝑝! output that as a prediction.ØDiscard any remaining box with 𝐼𝑜𝑈≥0.5 with the box output in the previous step. image credit:",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-061",
+      "text": "box output in the previous step. image credit: deeplearning.ai 0.8 0.7 0.7 0.9 0.55",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-062",
+      "text": "Bounding Box Prediction•Non-max Suppression:•Implementation is simple:•Discard all boxes with 𝑝!≤0.6•While there are any remaining boxes:ØPick the box with the largest 𝑝! output that as a prediction.ØDiscard any remaining box with 𝐼𝑜𝑈≥0.5 with the box output in the previous step. image credit:",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-063",
+      "text": "box output in the previous step. image credit: deeplearning.ai 0.8 0.7 0.7 0.9",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-064",
+      "text": "Bounding Box Prediction•Non-max Suppression:•Implementation is simple:•Discard all boxes with 𝑝!≤0.6•While there are any remaining boxes:ØPick the box with the largest 𝑝! output that as a prediction.ØDiscard any remaining box with 𝐼𝑜𝑈≥0.5 with the box output in the previous step. image credit:",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-065",
+      "text": "box output in the previous step. image credit: deeplearning.ai 0.8 0.7 0.7 0.9",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-066",
+      "text": "Bounding Box Prediction•Non-max Suppression:•Implementation is simple:•Discard all boxes with 𝑝!≤0.6•While there are any remaining boxes:ØPick the box with the largest 𝑝! output that as a prediction.ØDiscard any remaining box with 𝐼𝑜𝑈≥0.5 with the box output in the previous step. image credit:",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-067",
+      "text": "box output in the previous step. image credit: deeplearning.ai 0.8 0.7 0.7 0.9 𝐼𝑜𝑈=𝑖𝑛𝑡𝑒𝑟𝑠𝑒𝑐𝑡𝑖𝑜𝑛𝑢𝑛𝑖𝑜𝑛",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-068",
+      "text": "Bounding Box Prediction•Non-max Suppression:•Implementation is simple:•Discard all boxes with 𝑝!≤0.6•While there are any remaining boxes:ØPick the box with the largest 𝑝! output that as a prediction.ØDiscard any remaining box with 𝐼𝑜𝑈≥0.5 with the box output in the previous step. image credit:",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-069",
+      "text": "box output in the previous step. image credit: deeplearning.ai 0.8 0.7 0.9",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-070",
+      "text": "Bounding Box Prediction•Non-max Suppression:•Implementation is simple:•Discard all boxes with 𝑝!≤0.6•While there are any remaining boxes:ØPick the box with the largest 𝑝! output that as a prediction.ØDiscard any remaining box with 𝐼𝑜𝑈≥0.5 with the box output in the previous step. image credit:",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-071",
+      "text": "box output in the previous step. image credit: deeplearning.ai 0.8 0.7 0.9",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-072",
+      "text": "Bounding Box Prediction•Non-max Suppression:•This is for only one class (i.e., car) and must be repeat this process independently for each category (e.g., car, pedestrian, etc.) in the image. image credit: deeplearning.ai 0.8 0.9",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-073",
+      "text": "Bounding Box Prediction•The Question:•What if there are two objects in a single cell? image credit: deeplearning.ai",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-074",
+      "text": "Bounding Box Prediction•The Question:•What if there are two objects in a single cell?•Solution: Anchor boxes image credit: deeplearning.ai 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$ 𝑦= 𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$𝑝!𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤𝑐\"𝑐#𝑐$output y3x3x8output y3x3x2x83x3x16 anchor box#1 anchor box#2",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-075",
+      "text": "Bounding Box Prediction•The Question:•What if there are two objects in a single cell?•Solution: Anchor boxes image credit: deeplearning.ai 𝑦= 1𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤1001𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤010 output y3x3x2x83x3x16 pedestrian car",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-076",
+      "text": "Bounding Box Prediction•The Question:•What if there are two objects in a single cell?•Solution: Anchor boxes image credit: deeplearning.ai 𝑦= 0??????1𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤010 output y3x3x2x83x3x16 no pedestrian",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-077",
+      "text": "Bounding Box Prediction•The Question:•What if there are two objects in a single cell?•Solution: Anchor boxes•Anchor boxes are pre-defined.•Eachobjectintraining imageisassignedtogrid cellthatcontainsobject’s midpointandanchorbox forthegridcellwith highestIoU. image credit: deeplearning.ai … Bounding",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-078",
+      "text": "image credit: deeplearning.ai … Bounding box for pedestrianThis has higher IoU with anchor box#1",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-079",
+      "text": "Bounding Box Prediction•The Question:•What if there are two objects in a single cell?•Solution: Anchor boxes•Here two anchor boxes are considered at most, and this approach would not handle the case more than two objects take part in a cell, which is unlikely to happen especially when the grid size",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-080",
+      "text": "unlikely to happen especially when the grid size is large (e.g., 100x100). image credit: deeplearning.ai",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-081",
+      "text": "Bounding Box Prediction•The YOLO algorithm with bounding box:•With two anchor boxes: image credit: deeplearning.aiRedmon et al., 2015, You Only Look Once: Unified real-time object detection 𝑦= 0??????1𝑏𝑥𝑏𝑦𝑏ℎ𝑏𝑤010 This bounding box has higher IoU with anchor box#2So, the output must be as given left",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-082",
+      "text": "anchor box#2So, the output must be as given left bx,by bwbh",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-083",
+      "text": "Bounding Box Prediction•The YOLO algorithm with bounding box:•With two anchor boxes: •The network image credit: deeplearning.aiRedmon et al., 2015, You Only Look Once: Unified real-time object detection x ConvNety100×100×3 3×3×16",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-084",
+      "text": "Object Detection with R - CNN•Region with CNN (R-CNN):•Rather than sliding window on every single window, select just a few windows. image credit: deeplearning.ai Girshiket. al, 2013, Rich feature hierarchies for accurate object detection and semantic segmentation",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-085",
+      "text": "Object Detection with R - CNN•Region with CNN (R-CNN):•Rather than sliding window on every single window, select just a few windows. image credit: deeplearning.ai Girshiket. al, 2013, Rich feature hierarchies for accurate object detection and semantic segmentation",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-086",
+      "text": "Object Detection with R - CNN•Region with CNN (R-CNN):•Rather than sliding window on every single window, select just a few windows. image credit: deeplearning.ai Girshiket. al, 2013, Rich feature hierarchies for accurate object detection and semantic segmentation",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-087",
+      "text": "Object Detection with R - CNN•Region with CNN (R-CNN):•Rather than sliding window on every single window, select just a few windows. image credit: deeplearning.ai Girshiket. al, 2013, Rich feature hierarchies for accurate object detection and semantic segmentation",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-088",
+      "text": "Object Detection with R - CNN•Region with CNN (R-CNN):•Rather than sliding window on every single window, select just a few windows. image credit: deeplearning.ai Girshiket. al, 2013, Rich feature hierarchies for accurate object detection and semantic segmentation",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-089",
+      "text": "Object Detection with R - CNN•Region with CNN (R-CNN):•Rather than sliding window on every single window, select just a few windows. image credit: deeplearning.ai Girshiket. al, 2013, Rich feature hierarchies for accurate object detection and semantic segmentation",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-090",
+      "text": "Object Detection with R - CNN•Region with CNN (R-CNN):•Rather than sliding window on every single window, select just a few windows. image credit: deeplearning.ai Girshiket. al, 2013, Rich feature hierarchies for accurate object detection and semantic segmentation",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-091",
+      "text": "Object Detection with R - CNN•Region with CNN (R-CNN):•Rather than sliding window on every single window, select just a few windows. image credit: deeplearning.ai Girshiket. al, 2013, Rich feature hierarchies for accurate object detection and semantic segmentation",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-092",
+      "text": "Object Detection with R - CNN•Region with CNN (R-CNN):•Rather than sliding window on every single window, select just a few windows. image credit: deeplearning.ai Girshiket. al, 2013, Rich feature hierarchies for accurate object detection and semantic segmentation",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-093",
+      "text": "Object Detection with R - CNN•Region with CNN (R-CNN):•The motivation is to get rid of non-interesting region to classify. image credit: deeplearning.ai Girshiket. al, 2013, Rich feature hierarchies for accurate object detection and semantic segmentation",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-094",
+      "text": "Object Detection with R - CNN•Region with CNN (R-CNN):•Run a segmentation algorithm to find ‘blobs’.•Run the classifier on only that blob. image credit: deeplearning.aiGirshiket. al, 2013, Rich feature hierarchies for accurate object detection and semantic segmentation segmentation algorithm",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-095",
+      "text": "Semantic Segmentation•Motivation:•Rather than putting a bounding box, draw an outline around the object detected.•For example, for self-driving cars: instead of drawing bounding box on road, label each individual pixel as is this drivable road or not. image credit: deeplearning.ai Input imageObject",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-096",
+      "text": "image credit: deeplearning.ai Input imageObject DetectionSemantic Segmentation",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-097",
+      "text": "Semantic Segmentation•Per-pixel class labels:1:Car0:NotCar image credit: deeplearning.ai",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-098",
+      "text": "Semantic Segmentation•Per-pixel class labels:1:Car2:Building3:Road image credit: deeplearning.ai",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-099",
+      "text": "Semantic Segmentation•Per-pixel class labels:1:Car2:Building3:Road image credit: deeplearning.aiSegmentation Map",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-100",
+      "text": "Semantic Segmentation•Deep Learning for Semantic Segmentation: image credit: deeplearning.ai Dimension must match",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-101",
+      "text": "Semantic Segmentation•Deep Learning for Semantic Segmentation: image credit: deeplearning.ai •Number of channels often increases•Dimension of image often decreases•Number of channels often decreases•Dimension of image often increases",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-102",
+      "text": "Semantic Segmentation•Transpose Convolution:•The objective is to make the tensor bigger and bigger. image credit: deeplearning.ai",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-103",
+      "text": "Semantic Segmentation•Normal Convolution: image credit: deeplearning.ai6×6×3 4×4×5 * 3×3×3 ‘bottleneck layer’ =",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-104",
+      "text": "Semantic Segmentation•Transpose Convolution: image credit: deeplearning.ai ∗ = 2x2input 3x3filter 4x4output",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-105",
+      "text": "Semantic Segmentation•Transpose Convolution:•Step by step calculation image credit: deeplearning.ai ∗121201021 = 2x2input 3x3filter 4x4output 2132",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-106",
+      "text": "Semantic Segmentation•Transpose Convolution:•Step by step calculation•Rather than the input we place the filter on output image credit: deeplearning.ai ∗121201021 =242402042 2x2input 3x3filter 4x4output 2132 2 2 22 2 22 2 2",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-107",
+      "text": "Semantic Segmentation•Transpose Convolution:•Step by step calculation•Rather than the input we place the filter on output image credit: deeplearning.ai ∗121201021 =24+12+2140+22+0104+02+21 2x2input 3x3filter 4x4output 2132 1 1 11 1 11 1 1",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-108",
+      "text": "Semantic Segmentation•Transpose Convolution:•Step by step calculation•Rather than the input we place the filter on output image credit: deeplearning.ai ∗121201021 =254142210441 2x2input 3x3filter 4x4output 2132 1 1 11 1 11 1 1",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-109",
+      "text": "Semantic Segmentation•Transpose Convolution:•Step by step calculation•Rather than the input we place the filter on output image credit: deeplearning.ai ∗121201021 =25414+32+62+310+64+04+31063 2x2input 3x3filter 4x4output 2132 3 3 33 3 33 3 3",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-110",
+      "text": "Semantic Segmentation•Transpose Convolution:•Step by step calculation•Rather than the input we place the filter on output image credit: deeplearning.ai ∗121201021 =254178516471063 2x2input 3x3filter 4x4output 2132 3 3 33 3 33 3 3",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-111",
+      "text": "Semantic Segmentation•Transpose Convolution:•Step by step calculation•Rather than the input we place the filter on output image credit: deeplearning.ai ∗121201021 =254178+25+41+264+47+01+206+03+42 2x2input 3x3filter 4x4output 2132 2 2 22 2 22 2 2",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-112",
+      "text": "Semantic Segmentation•Transpose Convolution:•Step by step calculation•Rather than the input we place the filter on output image credit: deeplearning.ai ∗121201021 =25417109368730672 2x2input 3x3filter 4x4output 2132 2 2 22 2 22 2 2",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-113",
+      "text": "Semantic Segmentation•Transpose Convolution:•Step by step calculation•Rather than the input we place the filter on output image credit: deeplearning.ai 25417109368730672 2x2input 4x4output 2132",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-114",
+      "text": "Semantic Segmentation•U-NET Architecture: image credit: deeplearning.ai Normal convolution Transpose convolution",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-115",
+      "text": "Semantic Segmentation•U-NET Architecture: image credit: deeplearning.ai Normal convolution Transpose convolutionAs we go deeper;•We lose spatial information•We obtain contextual information",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-116",
+      "text": "Semantic Segmentation•U-NET Architecture: image credit: deeplearning.ai high spatial informationlow contextual information low spatial informationhigh contextual information",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-117",
+      "text": "Semantic Segmentation•U-NET Architecture: image credit: deeplearning.ai skip connections high spatial informationlow contextual information low spatial informationhigh contextual information skip connections are used in U-NETs to also obtain spatial information in the deeper layers",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-118",
+      "text": "Semantic Segmentation•U-NET Architecture: image credit: deeplearning.ai ℎ×𝑤×#𝑐𝑙𝑎𝑠𝑠𝑒𝑠ℎ×𝑤×3",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-119",
+      "text": "Semantic Segmentation•U-NET Architecture: ℎ×𝑤×#𝑐𝑙𝑎𝑠𝑠𝑒𝑠 ℎ 𝑤 #𝑐𝑙𝑎𝑠𝑠𝑒𝑠",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-120",
+      "text": "Semantic Segmentation•U-NET Architecture:•Each pixel has a vector with the length of #classes (in this example 3 classes).•Each element in this vector indicates how likely it belongs to that class it represents. 0.80.10.1",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    },
+    {
+      "chunk_id": "chunk-121",
+      "text": "Semantic Segmentation•U-NET Architecture:•Each pixel has a vector with the length of #classes (in this example 3 classes).•Each element in this vector indicates how likely it belongs to that class it represents.•If you take argmax you can visualize the segmentation map.",
+      "source": "C:\\Users\\Emir\\Downloads\\Week_6_CNN_Applications.pdf"
+    }
+  ],
+  "timestamp": "2025-09-02T23:20:07.247174"
+}
