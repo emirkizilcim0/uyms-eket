@@ -140,3 +140,8 @@ It will yield `combined_summary.json`. It has a summarization of `context_langua
 
 
 The `example_usage` folder contains the examples of the output files. While it all returns a `.json` file, you can also manipulate the files to the attributes we've assigned them to.
+
+
+## License
+This project is licensed under the GNU General Public License v3.0 or later (GPL-3.0-or-later).
+See the LICENSE file for details.

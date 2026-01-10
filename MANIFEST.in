@@ -1,0 +1,25 @@
+# --- Legal & metadata ---
+include LICENSE
+include README.md
+include pyproject.toml
+include setup.py
+include requirements.txt
+include Dockerfile
+
+# --- Python source code ---
+recursive-include EKET *.py
+
+# --- Example usage ---
+recursive-include example_usage *.py
+
+# --- Tests ---
+recursive-include tests *.py
+
+# --- Exclude caches & build artifacts ---
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude __pycache__/*
+recursive-exclude .pytest_cache *
+recursive-exclude EKET.egg-info *
+recursive-exclude chroma *
+recursive-exclude saved_data *

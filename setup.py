@@ -1,9 +1,14 @@
+from pydoc import text
 from setuptools import setup, find_packages
 
 setup(
     name="EKET",
     version="0.1.0",
     packages=find_packages(),
+    license="GPL-3.0-or-later",
+        classifiers=[
+        "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    ],
     install_requires=[
         # Google Generative AI
         "google-generativeai==0.8.4",
