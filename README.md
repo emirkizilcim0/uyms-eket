@@ -112,7 +112,7 @@ It will yield `context_language.json` file. Other operations will be depend on t
 2) Do you want to ask a specific question? If yes:
 
 ```bash
-python example_usage/query_answer.py --query "Your Question"
+python example_usage/query_answer.py --query "Your Question" --input "Your context_language.jon" --output "Output Folder"
 ```
 
 And it will yield `context_question_answer.json`. If it is created, the quiz generation(next step) will depend on this question. 
@@ -120,15 +120,15 @@ And it will yield `context_question_answer.json`. If it is created, the quiz gen
 3) Creating the quiz:
 
 ```bash
-python example_usage/generate_quiz.py
+python example_usage/generate_quiz.py --input "Path to JSON file (query_answer.json or context_language.json)" --output "Output folder to save the quiz"
 ```
 
-It will yield `generated_quiz.json`. 
+It will yield `generated_quiz.json`.
 
 4) Evaluating the solved quiz:
 
 ```bash
-python example_usage/evaluation.py
+python example_usage/evaluation.py --input "generated_quiz.json file path" --output "Output folder where evaluation results will be stored"
 ```
 
 It will yield `evaluation_results.json`. It will create this file from `generated_quiz.json` and answers of the user.
@@ -137,7 +137,7 @@ It will yield `evaluation_results.json`. It will create this file from `generate
 - Optional:
 
 ```bash
-python example_usage/summarize.py 
+python example_usage/summarize.py --input "Your context_language.json file" --output "Output Folder"
 ```
 
 It will yield `combined_summary.json`. It has a summarization of `context_language.json`. 
