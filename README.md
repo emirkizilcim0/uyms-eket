@@ -30,6 +30,12 @@ EKET/                         # Root directory of the project
 
 ### Installation
 
+0) First you should set your gemini api key into your environment system
+
+```powershell
+setx TUTOR_API_KEY "GEMINI_API_KEY"
+setx EMBEDDING_MODEL "gemini-embedding-001"
+```
 1) Clone the GitHub repository.
 2) Go to the folder and run the script below.
 ```bash

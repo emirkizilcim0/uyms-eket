@@ -33,7 +33,7 @@ class DocumentSummarizer:
     
     def __init__(self, config):
         self.config = config or get_config()
-        self.model = genai.Client(api_key=self.config['API_KEY'])
+        self.client = genai.Client(api_key=self.config['API_KEY'])
         self.model_name = self.config['CHAT_MODEL']
 
         self.summary_prompt = """
@@ -112,7 +112,11 @@ def get_combined_summary(input_path: str, output_dir: str):
     
     logger.info(f"\nGenerating combined summary of {len(chunks)} chunks...")
     combined_summary = summarizer.summarize_combined_documents(chunks)
-    logger.info(combined_summary["summary"])
+    if "summary" in combined_summary:
+        logger.info(combined_summary["summary"])
+    else:
+        logger.error(combined_summary.get("error", "Unknown summarization error"))
+
     
     results = {
         "combined_summary": combined_summary,

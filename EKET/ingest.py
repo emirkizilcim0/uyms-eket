@@ -37,6 +37,7 @@ from .utils import get_config, save_json
 from .clean import clean_documents
 import pandas as pd
 import logging
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 ##############################################################################
 #                              IMAGE PROCESSOR                               #
@@ -665,7 +666,7 @@ def split_text(documents: List[Document]):
         logger.debug(f"Sample chunk: {all_chunks[0].page_content[:200]}...")
     return all_chunks
 
-def save(context_dict: Dict, chunks: List[Document], output_dir: str):
+def save(context_dict: Dict, chunks: List[Document], output_dir: str = None):
     """Ensure output is valid JSON for the backend"""
     result = {
         "context": context_dict,
@@ -673,14 +674,15 @@ def save(context_dict: Dict, chunks: List[Document], output_dir: str):
         "status": "success"
     }
 
-    # Ensure output folder exists
-    os.makedirs(output_dir, exist_ok=True)
-    out_path = os.path.join(output_dir, "context_language.json")
-
-    save_json(result, out_path)
-
+    # Only pass subdir if it's not the default "saved_data"
+    if output_dir and output_dir != "saved_data":
+        save_json(result, "context_language.json", subdir=output_dir)
+    else:
+        save_json(result, "context_language.json")
+    
     print(json.dumps(result, ensure_ascii=False))  # Only JSON goes to stdout
     return result
+
 
 import argparse
 def main():
@@ -688,7 +690,7 @@ def main():
     parser = argparse.ArgumentParser(description="Document Ingestion Pipeline")
     parser.add_argument("--youtube", type=str, help="YouTube video URL to process")
     parser.add_argument("--file", type=str, help="Path to a file to process")
-    parser.add_argument("--output", "-o", type=str, default="saved_data", help="Output folder")
+    # Remove the output argument since we're using config
     args = parser.parse_args()
 
     if not args.youtube and not args.file:
@@ -723,7 +725,7 @@ def main():
             f"chunk-{i+1:03d}": chunk.page_content
             for i, chunk in enumerate(chunks)
         }
-        return save(context_dict, chunks, args.output)
+        return save(context_dict, chunks)  # Don't pass args.output since it doesn't exist
 
     except Exception as e:
         error_result = {
