@@ -30,38 +30,45 @@ EKET/                         # Root directory of the project
 
 ### Installation
 
-0) First you should set your gemini api key into your environment system
+#### Step 0: Set Environment
+
+First you should set your gemini api key into your environment system
 
 ```powershell
 setx TUTOR_API_KEY "GEMINI_API_KEY"
 setx EMBEDDING_MODEL "gemini-embedding-001"
 ```
-1) Clone the GitHub repository.
-2) Go to the folder and run the script below.
-```bash
-pip install -r requirements.txt
-```
 
-3) For additional (to make sure), install those packages for image processing
-```bash
-pip install pillow google-generativeai
-```
+#### Step 1: Windows Installation Note (C++ Build Tools Required)
 
-4) For HTML rendering
+Some dependencies of **EKET** (such as **PyMuPDF**) include native C/C++ extensions.
+On **Windows**, if a precompiled wheel is not available for your Python version,
+`pip` may attempt to build the package from source.
+
+If you encounter an error similar to:
+
+please install **Visual Studio C++ Build Tools**: https://visualstudio.microsoft.com/visual-cpp-build-tools/
+
+During installation, make sure to select:
+- **C++ build tools**
+- **MSVC v143 (or latest)**
+- **Windows 10/11 SDK**
+
+#### Step 3: HTML Rendering
+
+For HTML rendering
 
 ```bash
 pip install playwright
 playwright install
 ```
 
+#### Step 4: Pip Install
 
-```bash
-pip install -e .
+After installation, restart your terminal and rerun:
+```powershell
+pip install EKET
 ```
-
-5) In the `example_usage` folder, it is demonstrated that how to use the package correctly. You can get inspired by it and anaylze the package better. You need to REMOVE it from EKET while installing.
-
-**Note: Some requirements may be not in the list, please after the installation, check your packages.**
 
 ### How to Use
 

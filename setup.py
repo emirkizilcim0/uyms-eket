@@ -1,5 +1,9 @@
 from pydoc import text
 from setuptools import setup, find_packages
+from pathlib import Path
+
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="EKET",
@@ -9,6 +13,9 @@ setup(
         classifiers=[
         "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     ],
+    description="EKET: Educational Knowledge Extraction Toolkit",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     install_requires=[
         # Google Generative AI
         "google-generativeai==0.8.4",
