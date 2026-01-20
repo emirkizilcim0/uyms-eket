@@ -101,7 +101,7 @@ python example_usage/query_answer.py --query "Your question here..."
 
 Here is the simple designed FlowChart of the EKET-package:
 
-![FlowChart](example_usage/flowchart.png)
+![FlowChart](https://github.com/emirkizilcim0/uyms-eket/blob/v0.1.2/example_usage/flowchart.png)
 
 
 1) Ingesting the documents that want to be studied on:
