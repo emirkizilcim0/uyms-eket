@@ -1,3 +1,4 @@
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/eket?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/eket)
 # EKET 
 
 EKET is a package for loading the documents(`.xls, .xlsx, .pdf, .csv, .md, youtube-links, .pptx, .txt, .json`) and converting them into the chunks which has meaning for the further instructions from the user.
